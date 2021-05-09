@@ -1,7 +1,7 @@
 from tkinter import *
 import math
 
-# ---------------------------- CONSTANTS ------------------------------- #
+# --------------------- CONSTANTS & VARIABLES ------------------------ #
 PINK = "#e2979c"
 RED = "#e7305b"
 GREEN = "#9bdeac"
@@ -14,7 +14,7 @@ cycle_count = 0
 timer = None
 checkmarks = ""
 
-# ---------------------------- TIMER RESET ------------------------------- # 
+# -------------------------- TIMER RESET ----------------------------- #
 
 
 def reset_tool():
@@ -30,7 +30,7 @@ def reset_tool():
     canvas.itemconfig(timer_display, text="00:00")
 
 
-# ---------------------------- TIMER MECHANISM ------------------------------- # 
+# ------------------------ TIMER MECHANISM --------------------------- #
 
 
 def start_timer():
@@ -51,7 +51,7 @@ def start_timer():
             title.config(text="Work", fg=GREEN)
 
 
-# ---------------------------- COUNTDOWN MECHANISM ------------------------------- # 
+# ---------------------- COUNTDOWN MECHANISM ------------------------- #
 
 
 def timer_count(count):

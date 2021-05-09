@@ -1,4 +1,4 @@
 # pomodoro-project
 
 Practicing tkinter package.
-Building a pomodoro tool.
+Building a Pomodoro tool.

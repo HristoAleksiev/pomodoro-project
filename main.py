@@ -7,9 +7,10 @@ RED = "#e7305b"
 GREEN = "#9bdeac"
 YELLOW = "#f7f5dd"
 FONT_NAME = "Courier"
-WORK_MIN = 25
-SHORT_BREAK_MIN = 5
-LONG_BREAK_MIN = 20
+WORK_MIN = 1
+SHORT_BREAK_MIN = 0.5
+LONG_BREAK_MIN = 5
+cycle_count = 0
 
 # ---------------------------- TIMER RESET ------------------------------- # 
 
@@ -17,7 +18,21 @@ LONG_BREAK_MIN = 20
 
 
 def start_timer():
-    timer_count(WORK_MIN * 60)
+    global cycle_count
+
+    cycle_count += 1
+
+    if cycle_count == 8:
+        timer_count(LONG_BREAK_MIN * 60)
+        title.config(text="Break", fg=RED)
+        cycle_count = 0
+    else:
+        if cycle_count % 2 == 0:
+            timer_count(SHORT_BREAK_MIN * 60)
+            title.config(text="Break", fg=PINK)
+        else:
+            timer_count(WORK_MIN * 60)
+            title.config(text="Work", fg=GREEN)
 
 
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- # 
@@ -27,9 +42,14 @@ def timer_count(count):
     minutes_to_count = math.floor(count / 60)
     second_to_count = count % 60
 
+    if second_to_count < 10:
+        second_to_count = f"0{second_to_count}"
+
     canvas.itemconfig(timer_display, text=f"{minutes_to_count}:{second_to_count}")
     if count > 0:
-        window.after(1000, timer_count, count - 1)
+        window.after(200, timer_count, count - 1)
+    else:
+        start_timer()
 
 
 # ---------------------------- UI SETUP ------------------------------- #

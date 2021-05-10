@@ -2,6 +2,7 @@ from tkinter import *
 import math
 
 # --------------------- CONSTANTS & VARIABLES ------------------------ #
+
 PINK = "#e2979c"
 RED = "#e7305b"
 GREEN = "#9bdeac"
